@@ -9,6 +9,7 @@ oclazyload
 npm install
 ## Development
 npm run dev
+
 http://localhost:8080
 ## Deploy
 npm run build
