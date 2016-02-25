@@ -11,7 +11,7 @@ let CopyWebpackPlugin = require('copy-webpack-plugin');
 let config = {
     devtool: 'source-map',
     entry: {
-        app: './src/app/app.js',
+        app: './src/app/bootstrap.js',
         vender: ['angular','angular-route','angular-ui-router','oclazyload','angular-ui-bootstrap'] 
     },
     output: {
