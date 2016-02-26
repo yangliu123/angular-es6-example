@@ -1,9 +1,9 @@
 # angular-es-example
-angular 1.x
-es6
-webpack
-bootstrap
-oclazyload
+* angular 1.x
+* es6
+* webpack
+* bootstrap
+* oclazyload
 
 ## Install
 npm install
