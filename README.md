@@ -4,6 +4,7 @@
 * webpack
 * bootstrap
 * oclazyload
+* angular ui router
 
 ## Install
 npm install
