@@ -1,6 +1,6 @@
 'use strict';
 export default function AppRouter($urlRouterProvider, $stateProvider) {
-
+    'ngInject';
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('app', {
@@ -20,7 +20,7 @@ export default function AppRouter($urlRouterProvider, $stateProvider) {
             load: ($q, $ocLazyLoad) => {
                 let deferred = $q.defer();
                 require.ensure([], () => {
-                    let module = require('./app.controller').default;
+                    let module = require('./app.controller').default;//babel6 export default
                     $ocLazyLoad.load({ name: module.name });
                     deferred.resolve(module);
                 });

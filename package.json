@@ -30,7 +30,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "build": "rimraf dist && webpack",
+    "build": "export NODE_ENV=production; rimraf dist && webpack",
     "dev": "webpack-dev-server --history-api-fallback --inline --progress --content-base ./dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

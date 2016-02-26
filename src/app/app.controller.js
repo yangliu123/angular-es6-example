@@ -2,6 +2,7 @@
 import angular from 'angular';
 class AppController{
     constructor(){
+        'ngInject';
         
     }
 }

@@ -2,7 +2,9 @@
 import angular from 'angular';
 
 class AboutController{
-    constructor(){
+    constructor($http){
+        'ngInject'
+        this.$http = $http;
         this.count = 0;
     }
     increase(){

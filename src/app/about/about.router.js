@@ -1,9 +1,10 @@
 'use strict';
 export default function ($stateProvider) {
-
+    'ngInject';
     $stateProvider.state('app.about', {
         url: '/about',
         templateProvider: ($q) => {
+            'ngInject';
             let deferred = $q.defer();
             require.ensure([], function () {
                 deferred.resolve(require('./index.html'));
@@ -14,6 +15,7 @@ export default function ($stateProvider) {
         controllerAs: 'about',
         resolve: {
             load: ($q, $ocLazyLoad) => {
+                'ngInject';
                 let deferred = $q.defer();
                 require.ensure([], () => {
                     let module = require('./about.controller').default;

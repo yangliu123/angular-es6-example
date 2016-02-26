@@ -10,7 +10,6 @@ import HomeModule from './home/home.module';
 import AboutModule from './about/about.module';
 
 import AppRouter from './app.router'
-
 export default angular.module('app', [
     'ngRoute', 'ui.router', 'oc.lazyLoad', 'ui.bootstrap',
     HomeModule.name, AboutModule.name

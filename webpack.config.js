@@ -4,15 +4,17 @@ let webpack = require('webpack');
 
 let CommonChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 let DedupePlugin = webpack.optimize.DedupePlugin;
+
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let CopyWebpackPlugin = require('copy-webpack-plugin');
 
+var env = process.env.NODE_ENV || 'development';
+
 let config = {
-    devtool: 'source-map',
     entry: {
         app: './src/app/bootstrap.js',
-        vender: ['angular','angular-route','angular-ui-router','oclazyload','angular-ui-bootstrap'] 
+        vender: ['angular', 'angular-route', 'angular-ui-router', 'oclazyload', 'angular-ui-bootstrap']
     },
     output: {
         filename: '[name].bundle.js',
@@ -53,7 +55,16 @@ let config = {
         }),
         new CommonChunkPlugin('vender', '[name].bundle.js'),
         new ExtractTextPlugin("[name].css")
+
     ]
 };
+if (env === 'production') {
+    config.devtool = 'source-map',
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false }
+    }));
+} else if (env === 'development') {
+    config.devtool = 'eval';
+}
 
 module.exports = config;
