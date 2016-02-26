@@ -1,5 +1,5 @@
 # angular-es-example
-angular
+angular 1.x
 es6
 webpack
 bootstrap
