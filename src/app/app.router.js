@@ -1,5 +1,5 @@
 'use strict';
-export default function AppRouter($urlRouterProvider, $stateProvider) {
+export default function ($urlRouterProvider, $stateProvider) {
     'ngInject';
     $urlRouterProvider.otherwise('/');
 

@@ -1,9 +1,9 @@
 'use strict';
 import angular from 'angular';
-
+import AbouteModule from './about.module';
 class AboutController{
+    /*@ngInject*/
     constructor($http){
-        'ngInject'
         this.$http = $http;
         this.count = 0;
     }
@@ -14,4 +14,4 @@ class AboutController{
         this.count--;
     }
 }
-export default angular.module('app.about').controller('AboutController', AboutController);
+export default angular.module(AbouteModule.name).controller('AboutController', AboutController);

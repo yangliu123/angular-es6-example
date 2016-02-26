@@ -1,6 +1,6 @@
 'use strict';
 import angular from 'angular';
 
-import HomeRouter from './home.router';
+import router from './home.router';
 
-export default angular.module('app.home', []).config(HomeRouter);
+export default angular.module('app.home', []).config(router);

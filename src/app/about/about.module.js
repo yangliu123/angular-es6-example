@@ -1,5 +1,5 @@
 'use strict';
 import angular from 'angular';
-import AboutRouter from './about.router';
+import router from './about.router';
 
-export default angular.module('app.about', []).config(AboutRouter);
+export default angular.module('app.about', []).config(router);
