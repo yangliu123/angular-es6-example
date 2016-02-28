@@ -1,8 +1,8 @@
 'use strict';
-export default function ($stateProvider) {
-    'ngInject';
+export default /*@ngInject*/function ($stateProvider) {
     $stateProvider.state('app.about', {
         url: '/about',
+        /*@ngInject*/
         templateProvider: ($q) => {
             'ngInject';
             let deferred = $q.defer();
@@ -14,6 +14,7 @@ export default function ($stateProvider) {
         controller: 'AboutController',
         controllerAs: 'about',
         resolve: {
+            /*@ngInject*/
             load: ($q, $ocLazyLoad) => {
                 'ngInject';
                 let deferred = $q.defer();

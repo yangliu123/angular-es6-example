@@ -1,8 +1,8 @@
 'use strict';
-export default function ($stateProvider) {
-    'ngInject';
+export default /*@ngInject*/function ($stateProvider) {
     $stateProvider.state('app.home', {
         url: '/',
+        /*@ngInject*/
         templateProvider: ($q) => {
             let deferred = $q.defer();
             require.ensure([], function () {
@@ -13,6 +13,7 @@ export default function ($stateProvider) {
         controller: 'HomeController',
         controllerAs: 'home',
         resolve: {
+            /*@ngInject*/
             load: ($q, $ocLazyLoad) => {
                 let deferred = $q.defer();
                 require.ensure([], () => {
