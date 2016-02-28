@@ -1,4 +1,4 @@
-# angular-es-example
+# angular-es6-example
 * angular 1.x
 * es6
 * webpack
