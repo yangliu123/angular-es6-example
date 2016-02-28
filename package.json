@@ -39,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/qiangonline/angular-es6-webpack-oclazyload.git"
+    "url": "https://github.com/qiangonline/angular-es6-example.git"
   },
   "keywords": [
     "angular",
@@ -51,7 +51,7 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/qiangonline/angular-es6-webpack-oclazyload/issues"
+    "url": "https://github.com/qiangonline/angular-es6-example/issues"
   },
-  "homepage": "https://github.com/qiangonline/angular-es6-webpack-oclazyload#readme"
+  "homepage": "https://github.com/qiangonline/angular-es6-example#readme"
 }
