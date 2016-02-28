@@ -1,5 +1,5 @@
 {
-  "name": "angular-webpack-es6",
+  "name": "angular-es6-example",
   "version": "0.0.1",
   "description": "angular es6 webpack bootstrap oclazyload",
   "main": "webpack.config.js",
