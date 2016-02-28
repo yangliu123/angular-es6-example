@@ -13,7 +13,7 @@ var env = process.env.NODE_ENV || 'development';
 
 let config = {
     entry: {
-        app: './src/app/bootstrap.js',
+        app: './src/bootstrap.js',
         vender: ['angular', 'angular-route', 'angular-ui-router', 'oclazyload', 'angular-ui-bootstrap']
     },
     output: {
