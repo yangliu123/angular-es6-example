@@ -27,7 +27,7 @@ let config = {
         ],
         loaders: [
             {
-                test: /\.js?$/,
+                test: /\.js$/,
                 loader: 'ng-annotate-loader!babel-loader',
                 exclude: /node_modules/
             },
