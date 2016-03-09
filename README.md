@@ -7,20 +7,26 @@
 * angular-ui-router
 
 ## Install
-Make sure have install karma-cli
+Make sure you have karma-cli installed.
 `npm install -g karma-cli`
-Make sure have install protractor
+Make sure you have protractor installed.
 `npm install -g protractor`
 `npm install`
 ## Development
 `npm run dev`
 http://localhost:8080
 ## Test(Karma Jasmine Protractor)
-unit test 
+####unit test 
 `npm run test`
-e2e test 
+####e2e test 
+```bash
+#Start the application in one command prompt
+`npm run dev`
+#Start webdriver in another command prompt
+`npm webdriver-manager start`
+#Run e2e test in third command prompt
 `npm run e2e`
-
+```
 
 ## Deploy
 `npm run build`
