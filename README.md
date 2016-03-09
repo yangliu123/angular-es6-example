@@ -27,7 +27,7 @@ Now, navigate to [http://localhost:8080](http://localhost:8080) in your browser 
 ```bash
 # Start the application in one command prompt
 npm run dev
-# Start webdriver in another command prompt(make sure you have java environment)
+# Start webdriver in another command prompt(Make sure you have java environment.)
 npm webdriver-manager start
 # Run e2e test in a third command prompt
 npm run e2e
