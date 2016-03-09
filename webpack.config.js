@@ -9,12 +9,12 @@ let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let CopyWebpackPlugin = require('copy-webpack-plugin');
 
-var env = process.env.NODE_ENV || 'development';
+let env = process.env.NODE_ENV || 'development';
 
 let config = {
     entry: {
         app: './src/bootstrap.js',
-        vender: ['angular', 'angular-route', 'angular-ui-router', 'oclazyload', 'angular-ui-bootstrap']
+        vender: ['angular', 'angular-route', 'angular-ui-router', 'angular-ui-bootstrap', 'oclazyload']
     },
     output: {
         filename: '[name].bundle.js',
@@ -23,21 +23,21 @@ let config = {
     },
     module: {
         preLoaders: [
-            { test: /\.js$/, loader: "eslint-loader", exclude: /node_modules/ }
+            { test: /\.js$/, loader: 'eslint-loader', include: path.resolve('./src'), exclude: [] }
         ],
         loaders: [
             {
                 test: /\.js$/,
                 loader: 'ng-annotate-loader!babel-loader',
-                exclude: /node_modules/
+                include: path.resolve('./src')
             },
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
             },
             { test: /\.woff2$/, loader: 'file-loader?name=[name].[ext]' },
             { test: /\.woff$/, loader: 'file-loader?name=[name].[ext]' },
@@ -47,7 +47,7 @@ let config = {
             {
                 test: /\.html$/,
                 loader: 'raw-loader',
-                exclude: /node_modules/
+                exclude: [/node_modules/, /dist/]
             }
         ]
     },
@@ -57,17 +57,30 @@ let config = {
             template: './dev/index.html'
         }),
         new CommonChunkPlugin('vender', '[name].bundle.js'),
-        new ExtractTextPlugin("[name].css")
-
+        new ExtractTextPlugin('[name].css')
     ]
 };
 if (env === 'production') {
-    config.devtool = 'source-map',
+    config.devtool = 'source-map';
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false }
     }));
 } else if (env === 'development') {
+    config.devtool = 'inline-source-map';
+} else {
     config.devtool = 'eval';
+}
+
+if (env === 'test') {
+    config.entry = {};
+    config.output = {};
+    config.module.preLoaders.push({
+        test: /\.js$/,
+        loader: 'isparta-loader',
+        include: path.resolve('./src'),
+        exclude: [/\.spec\.js$/, /\.e2e\.js$/]
+    });
+    config.plugins = [];
 }
 
 module.exports = config;

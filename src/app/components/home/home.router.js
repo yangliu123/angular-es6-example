@@ -14,7 +14,7 @@ export default /*@ngInject*/function ($stateProvider) {
         controllerAs: 'home',
         resolve: {
             /*@ngInject*/
-            load: ($q, $ocLazyLoad) => {
+            loadHomeController: ($q, $ocLazyLoad) => {
                 let deferred = $q.defer();
                 require.ensure([], () => {
                     let module = require('./home.controller').default;

@@ -7,12 +7,13 @@ import 'angular-ui-router';
 import 'oclazyload';
 import 'angular-ui-bootstrap';
 
-import HomeModule from './home/home.module';
-import AboutModule from './about/about.module';
+import HomeModule from './components/home/home.module';
+import AboutModule from './components/about/about.module';
+import CommonModule from './common.module';
 
 import router from './app.router';
 
 export default angular.module('app', [
-    'ngRoute', 'ui.router', 'oc.lazyLoad', 'ui.bootstrap', 
-    HomeModule.name, AboutModule.name
+    'ngRoute', 'ui.router', 'oc.lazyLoad', 'ui.bootstrap',
+    HomeModule.name, AboutModule.name, CommonModule.name
 ]).config(router);

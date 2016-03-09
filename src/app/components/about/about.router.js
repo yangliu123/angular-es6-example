@@ -4,7 +4,6 @@ export default /*@ngInject*/function ($stateProvider) {
         url: '/about',
         /*@ngInject*/
         templateProvider: ($q) => {
-            'ngInject';
             let deferred = $q.defer();
             require.ensure([], function () {
                 deferred.resolve(require('./index.html'));
@@ -14,9 +13,7 @@ export default /*@ngInject*/function ($stateProvider) {
         controller: 'AboutController',
         controllerAs: 'about',
         resolve: {
-            /*@ngInject*/
-            load: ($q, $ocLazyLoad) => {
-                'ngInject';
+            loadAboutController: /*@ngInject*/($q, $ocLazyLoad) => {
                 let deferred = $q.defer();
                 require.ensure([], () => {
                     let module = require('./about.controller').default;
@@ -24,7 +21,17 @@ export default /*@ngInject*/function ($stateProvider) {
                     deferred.resolve(module);
                 });
                 return deferred.promise;
+            },
+            loadReverseFilter: /* @ngInject */($q, $ocLazyLoad) => {
+                let deferred = $q.defer();
+                require.ensure([], () => {
+                    
+                    $ocLazyLoad.load({ name: require('../../shared/reverse/reverse.filter').default.name });
+                    deferred.resolve();
+                });
+                return deferred.promise;
             }
+            
         }
     });
 
