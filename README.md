@@ -19,7 +19,7 @@ npm install
 ```bash
 npm run dev
 ```
-Now, navigate to [http://localhost:8080](http://localhost:8080) and develop.
+Now, navigate to [http://localhost:8080](http://localhost:8080) in your browser and develop.
 ## Test(Karma Jasmine Protractor)
 #### unit test 
 `npm run test`
