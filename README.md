@@ -16,7 +16,9 @@ npm install -g protractor
 npm install
 ```
 ## Development
-`npm run dev`
+```bash
+npm run dev
+```
 Now, navigate to [http://localhost:8080](http://localhost:8080)
 ## Test(Karma Jasmine Protractor)
 #### unit test 
@@ -24,11 +26,11 @@ Now, navigate to [http://localhost:8080](http://localhost:8080)
 #### e2e test 
 ```bash
 #Start the application in one command prompt
-`npm run dev`
+npm run dev
 #Start webdriver in another command prompt
-`npm webdriver-manager start`
+npm webdriver-manager start
 #Run e2e test in a third command prompt
-`npm run e2e`
+npm run e2e
 ```
 
 ## Deploy
