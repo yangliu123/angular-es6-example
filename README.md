@@ -25,11 +25,11 @@ Now, navigate to [http://localhost:8080](http://localhost:8080)
 `npm run test`
 #### e2e test 
 ```bash
-#Start the application in one command prompt
+# Start the application in one command prompt
 npm run dev
-#Start webdriver in another command prompt
+# Start webdriver in another command prompt
 npm webdriver-manager start
-#Run e2e test in a third command prompt
+# Run e2e test in a third command prompt
 npm run e2e
 ```
 
