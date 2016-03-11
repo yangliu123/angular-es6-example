@@ -9,17 +9,17 @@ let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let CopyWebpackPlugin = require('copy-webpack-plugin');
 
-let env = process.env.NODE_ENV || 'development';
 
 let config = {
+    devtool: 'inline-source-map',
     entry: {
-        app: './src/bootstrap.js',
+        app: path.resolve('./src/bootstrap.js'),
         vender: ['angular', 'angular-route', 'angular-ui-router', 'angular-ui-bootstrap', 'oclazyload']
     },
     output: {
         filename: '[name].bundle.js',
         chunkFilename: '[id].chunk.js',
-        path: './dist'
+        path: path.resolve('./dist')
     },
     module: {
         preLoaders: [
@@ -54,33 +54,12 @@ let config = {
     plugins: [
         new DedupePlugin(),
         new HtmlWebpackPlugin({
-            template: './dev/index.html'
+            template: path.resolve('./dev/index.html')
         }),
         new CommonChunkPlugin('vender', '[name].bundle.js'),
         new ExtractTextPlugin('[name].css')
     ]
 };
-if (env === 'production') {
-    config.devtool = 'source-map';
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false }
-    }));
-} else if (env === 'development') {
-    config.devtool = 'inline-source-map';
-} else {
-    config.devtool = 'eval';
-}
 
-if (env === 'test') {
-    config.entry = {};
-    config.output = {};
-    config.module.preLoaders.push({
-        test: /\.js$/,
-        loader: 'isparta-loader',
-        include: path.resolve('./src'),
-        exclude: [/\.spec\.js$/, /\.e2e\.js$/]
-    });
-    config.plugins = [];
-}
 
 module.exports = config;
