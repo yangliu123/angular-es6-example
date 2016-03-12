@@ -47,7 +47,7 @@
   },
   "scripts": {
     "build": "rimraf dist && webpack --config ./config/webpack.production.config.js --progress",
-    "dev": "node_modules/.bin/webpack-dev-server --config ./config/webpack.config.js --history-api-fallback --inline --progress --content-base ./dev --port 8090",
+    "dev": "node_modules/.bin/webpack-dev-server --config ./config/webpack.config.js --history-api-fallback --inline --progress --content-base ./dev --port 8080",
     "test": "karma start ./config/karma.conf.js",
     "e2e": "protractor ./config/protractor.conf.js"
   },
