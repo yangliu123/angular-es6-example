@@ -1,4 +1,5 @@
-var testContext;
+'use strict';
+let testContext;
 
 require('angular');
 require('angular-mocks');
