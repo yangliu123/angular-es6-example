@@ -2,8 +2,8 @@
 // Karma configuration
 
 // Generated on Tue Mar 08 2016 00:13:35 GMT+0800 (CST)
-let webpackConfig = require('./webpack/webpack.test.config.js');
-
+let path = require('path');
+let webpackConfig = require('./webpack.test.config.js');
 
 module.exports = function (config) {
     config.set({
@@ -19,7 +19,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            './test-context.js'
+            path.resolve('test-context.js')
         ],
 
 
@@ -31,7 +31,7 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            './test-context.js': ['webpack', 'sourcemap']
+            [path.resolve('test-context.js')]: ['webpack', 'sourcemap']
         },
 
         // test results reporter to use
@@ -39,7 +39,7 @@ module.exports = function (config) {
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['progress', 'coverage'],
         coverageReporter: {
-            dir: 'coverage/',
+            dir: path.resolve('coverage/'),
             reporters: [
                 { type: 'html' }
             ]
