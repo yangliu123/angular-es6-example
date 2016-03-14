@@ -1,5 +1,5 @@
 import angular from 'angular';
-import CommonModule from '../../common.module';
+import AppModule from '../../app.module';
 
 class Reverse{
     constructor(){
@@ -12,4 +12,4 @@ class Reverse{
     }
 }
 
-export default angular.module(CommonModule.name).filter('reverse', ()=>new Reverse());
+export default angular.module(AppModule.name).filter('reverse', ()=>new Reverse());
