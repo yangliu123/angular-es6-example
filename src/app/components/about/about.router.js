@@ -1,37 +1,40 @@
 'use strict';
-export default /*@ngInject*/function ($stateProvider) {
+export default /*@ngInject*/function($stateProvider) {
     $stateProvider.state('app.about', {
         url: '/about',
         /*@ngInject*/
         templateProvider: ($q) => {
-            let deferred = $q.defer();
-            require.ensure([], function () {
-                deferred.resolve(require('./index.html'));
+            let promise = $q((resolve, reject) => {
+                require.ensure([], function() {
+                    resolve(require('./index.html'));
+                });
             });
-            return deferred.promise;
+
+            return promise;
         },
         controller: 'AboutController',
         controllerAs: 'about',
         resolve: {
-            loadAboutController: /*@ngInject*/($q, $ocLazyLoad) => {
-                let deferred = $q.defer();
-                require.ensure([], () => {
-                    let module = require('./about.controller').default;
-                    $ocLazyLoad.load({ name: module.name });
-                    deferred.resolve(module);
+            load: /*@ngInject*/($q, $ocLazyLoad) => {
+                let aboutControllerPromise = $q((resolve, reject) => {
+                    require.ensure([], () => {
+                        let module = require('./about.controller').default;
+                        $ocLazyLoad.load({ name: module.name });
+                        resolve(module);
+                    });
                 });
-                return deferred.promise;
-            },
-            loadReverseFilter: /* @ngInject */($q, $ocLazyLoad) => {
-                let deferred = $q.defer();
-                require.ensure([], () => {
-                    
-                    $ocLazyLoad.load({ name: require('../../shared/reverse/reverse.filter').default.name });
-                    deferred.resolve();
+
+                let reverseFilterPromise = $q((resolve, reject) => {
+                    require.ensure([], () => {
+
+                        $ocLazyLoad.load({ name: require('../../shared/reverse/reverse.filter').default.name });
+                        resolve();
+                    });
                 });
-                return deferred.promise;
+
+                return $q.all([aboutControllerPromise, reverseFilterPromise]);
             }
-            
+
         }
     });
 

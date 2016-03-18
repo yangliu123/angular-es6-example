@@ -1,27 +1,30 @@
 'use strict';
-export default /*@ngInject*/function ($stateProvider) {
+export default /*@ngInject*/function($stateProvider) {
     $stateProvider.state('app.home', {
         url: '/',
         /*@ngInject*/
         templateProvider: ($q) => {
-            let deferred = $q.defer();
-            require.ensure([], function () {
-                deferred.resolve(require('./index.html'));
+            let promise = $q((resolve, reject) => {
+                require.ensure([], function() {
+                    resolve(require('./index.html'));
+                });
             });
-            return deferred.promise;
+            return promise;
         },
         controller: 'HomeController',
         controllerAs: 'home',
         resolve: {
             /*@ngInject*/
-            loadHomeController: ($q, $ocLazyLoad) => {
-                let deferred = $q.defer();
-                require.ensure([], () => {
-                    let module = require('./home.controller').default;
-                    $ocLazyLoad.load({ name: module.name });
-                    deferred.resolve(module);
+            load: ($q, $ocLazyLoad) => {
+                let promise = $q((resolve, reject) => {
+                    require.ensure([], () => {
+                        let module = require('./home.controller').default;
+                        $ocLazyLoad.load({ name: module.name });
+                        resolve(module);
+                    });
                 });
-                return deferred.promise;
+
+                return promise;
             }
         }
     });

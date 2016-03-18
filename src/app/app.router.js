@@ -1,18 +1,21 @@
 'use strict';
 
-export default /*@ngInject*/function ($urlRouterProvider, $stateProvider) {
+export default /*@ngInject*/function($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('app', {
         abstract: true,
         /*@ngInject*/
         templateProvider: ($q) => {
-            let deferred = $q.defer();
-            require.ensure([], function () {
-                let template = require('./index.html');
-                deferred.resolve(template);
+
+            let promise = $q((resolve, reject) => {
+                require.ensure([], function() {
+                    let template = require('./index.html');
+                    resolve(template);
+                });
             });
-            return deferred.promise;
+
+            return promise;
         },
         //template: require('./index.html'),
         controller: 'AppController',
@@ -20,13 +23,15 @@ export default /*@ngInject*/function ($urlRouterProvider, $stateProvider) {
         resolve: {
             /*@ngInject*/
             load: ($q, $ocLazyLoad) => {
-                let deferred = $q.defer();
-                require.ensure([], () => {
-                    let module = require('./app.controller').default;//babel6 export default
-                    $ocLazyLoad.load({ name: module.name });
-                    deferred.resolve(module);
+                let promise = $q((resolve, reject) => {
+                    require.ensure([], () => {
+                        let module = require('./app.controller').default;//babel6 export default
+                        $ocLazyLoad.load({ name: module.name });
+                        resolve(module);
+                    });
                 });
-                return deferred.promise;
+
+                return promise;
             }
         }
     });
