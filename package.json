@@ -47,9 +47,10 @@
   },
   "scripts": {
     "build": "rimraf dist && webpack --config ./config/webpack.production.config.js --progress",
-    "dev": "node_modules/.bin/webpack-dev-server --config ./config/webpack.config.js --history-api-fallback --inline --progress --content-base ./dev --port 8080",
-    "test": "karma start ./config/karma.conf.js",
-    "e2e": "protractor ./config/protractor.conf.js"
+    "dev": "./node_modules/.bin/webpack-dev-server --config ./config/webpack.config.js --history-api-fallback --inline --progress --content-base ./src --port 8080",
+    "test": "./node_modules/.bin/karma start ./config/karma.conf.js",
+    "test:ci": "./node_modules/.bin/karma start ./config/karma.conf.js --single-run",
+    "e2e": "./node_modules/.bin/protractor ./config/protractor.conf.js"
   },
   "repository": {
     "type": "git",
