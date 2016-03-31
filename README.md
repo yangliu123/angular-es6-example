@@ -8,10 +8,6 @@
 
 ## Install
 ```bash
-# Make sure you have karma-cli installed.
-npm install -g karma-cli
-# Make sure you have protractor installed.
-npm install -g protractor
 # Install 
 npm install
 ```
