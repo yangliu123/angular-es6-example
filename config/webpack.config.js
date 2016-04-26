@@ -54,11 +54,14 @@ let config = {
     plugins: [
         new DedupePlugin(),
         new HtmlWebpackPlugin({
-            template: path.resolve('./dev/index.html')
+            template: path.resolve('./src/index.html')
         }),
         new CommonChunkPlugin('vender', '[name].bundle.js'),
         new ExtractTextPlugin('[name].css')
-    ]
+    ],
+    eslint:{
+        configFile: './.eslintrc.json'
+    }
 };
 
 

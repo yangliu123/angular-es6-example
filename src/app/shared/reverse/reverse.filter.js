@@ -8,7 +8,7 @@ class Reverse{
                 return 'test';
             }
             return input.split('').reverse().join('');
-        }
+        };
     }
 }
 

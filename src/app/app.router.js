@@ -8,7 +8,7 @@ export default /*@ngInject*/function($urlRouterProvider, $stateProvider) {
         /*@ngInject*/
         templateProvider: ($q) => {
 
-            let promise = $q((resolve, reject) => {
+            let promise = $q((resolve) => {
                 require.ensure([], function() {
                     let template = require('./index.html');
                     resolve(template);
@@ -23,7 +23,7 @@ export default /*@ngInject*/function($urlRouterProvider, $stateProvider) {
         resolve: {
             /*@ngInject*/
             load: ($q, $ocLazyLoad) => {
-                let promise = $q((resolve, reject) => {
+                let promise = $q((resolve) => {
                     require.ensure([], () => {
                         let module = require('./app.controller').default;//babel6 export default
                         $ocLazyLoad.load({ name: module.name });

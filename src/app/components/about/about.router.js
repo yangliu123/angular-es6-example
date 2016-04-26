@@ -4,7 +4,7 @@ export default /*@ngInject*/function($stateProvider) {
         url: '/about',
         /*@ngInject*/
         templateProvider: ($q) => {
-            let promise = $q((resolve, reject) => {
+            let promise = $q((resolve) => {
                 require.ensure([], function() {
                     resolve(require('./index.html'));
                 });
@@ -16,7 +16,7 @@ export default /*@ngInject*/function($stateProvider) {
         controllerAs: 'about',
         resolve: {
             load: /*@ngInject*/($q, $ocLazyLoad) => {
-                let aboutControllerPromise = $q((resolve, reject) => {
+                let aboutControllerPromise = $q((resolve) => {
                     require.ensure([], () => {
                         let module = require('./about.controller').default;
                         $ocLazyLoad.load({ name: module.name });
@@ -24,7 +24,7 @@ export default /*@ngInject*/function($stateProvider) {
                     });
                 });
 
-                let reverseFilterPromise = $q((resolve, reject) => {
+                let reverseFilterPromise = $q((resolve) => {
                     require.ensure([], () => {
 
                         $ocLazyLoad.load({ name: require('../../shared/reverse/reverse.filter').default.name });

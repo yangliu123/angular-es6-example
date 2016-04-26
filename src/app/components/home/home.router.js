@@ -4,7 +4,7 @@ export default /*@ngInject*/function($stateProvider) {
         url: '/',
         /*@ngInject*/
         templateProvider: ($q) => {
-            let promise = $q((resolve, reject) => {
+            let promise = $q((resolve) => {
                 require.ensure([], function() {
                     resolve(require('./index.html'));
                 });
@@ -16,7 +16,7 @@ export default /*@ngInject*/function($stateProvider) {
         resolve: {
             /*@ngInject*/
             load: ($q, $ocLazyLoad) => {
-                let promise = $q((resolve, reject) => {
+                let promise = $q((resolve) => {
                     require.ensure([], () => {
                         let module = require('./home.controller').default;
                         $ocLazyLoad.load({ name: module.name });
