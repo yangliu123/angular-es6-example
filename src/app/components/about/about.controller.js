@@ -1,16 +1,16 @@
 'use strict';
 import angular from 'angular';
 import AbouteModule from './about.module';
-class AboutController{
+class AboutController {
     /*@ngInject*/
-    constructor($http){
+    constructor($http) {
         this.$http = $http;
         this.count = 0;
     }
-    increase(){
+    increase() {
         this.count++;
     }
-    decrease(){
+    decrease() {
         this.count--;
     }
 }

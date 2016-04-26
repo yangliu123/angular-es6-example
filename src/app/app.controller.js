@@ -1,11 +1,11 @@
 'use strict';
 import angular from 'angular';
 import AppModule from './app.module';
-class AppController{
+class AppController {
     /*@ngInject*/
-    constructor(){
-        
-        
+    constructor() {
+
+
     }
 }
 export default angular.module(AppModule.name).controller('AppController', AppController);

@@ -1,11 +1,11 @@
 'use strict';
-export default /*@ngInject*/function($stateProvider) {
+export default /*@ngInject*/function ($stateProvider) {
     $stateProvider.state('app.about', {
         url: '/about',
         /*@ngInject*/
         templateProvider: ($q) => {
             let promise = $q((resolve) => {
-                require.ensure([], function() {
+                require.ensure([], function () {
                     resolve(require('./index.html'));
                 });
             });

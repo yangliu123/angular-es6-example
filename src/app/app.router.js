@@ -1,6 +1,6 @@
 'use strict';
 
-export default /*@ngInject*/function($urlRouterProvider, $stateProvider) {
+export default /*@ngInject*/function ($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('app', {
@@ -9,7 +9,7 @@ export default /*@ngInject*/function($urlRouterProvider, $stateProvider) {
         templateProvider: ($q) => {
 
             let promise = $q((resolve) => {
-                require.ensure([], function() {
+                require.ensure([], function () {
                     let template = require('./index.html');
                     resolve(template);
                 });
