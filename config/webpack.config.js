@@ -23,7 +23,7 @@ let config = {
     },
     module: {
         preLoaders: [
-            { test: /\.js$/, loader: 'eslint-loader', include: path.resolve('./src'), exclude: [] }
+            { test: /\.js$/, loader: 'eslint-loader', include: path.resolve('./src') }
         ],
         loaders: [
             {
@@ -46,8 +46,7 @@ let config = {
             { test: /\.svg$/, loader: 'file-loader?name=[name].[ext]' },
             {
                 test: /\.html$/,
-                loader: 'raw-loader',
-                exclude: [/node_modules/, /dist/]
+                loader: 'raw-loader'
             }
         ]
     },
@@ -59,6 +58,10 @@ let config = {
         new CommonChunkPlugin('vender', '[name].bundle.js'),
         new ExtractTextPlugin('[name].css')
     ],
+    resolve: {
+        root: [path.resolve('./src'), path.resolve('./node_modules')],
+        extensions: ['', '.js']
+    },
     eslint:{
         configFile: './.eslintrc.json'
     }
