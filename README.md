@@ -60,8 +60,9 @@ npm install -g nodemon node-static babel babel-cli
 
 npm ls -g --depth=0
 
-npm info <package_name>
+#######################################安装结束########################################################
+#npm info <package_name>
 
-npm install -g <package_name>
+#npm install -g <package_name>
 
-npm update -g <package_name>
+#npm update -g <package_name>
